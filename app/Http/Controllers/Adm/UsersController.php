@@ -297,6 +297,7 @@ class UsersController extends BaseController
     {
         $parse = $this->langs->language;
         $parse['settings'] = str_replace('%s', $this->_user_query['user_name'], $this->langs->line('us_user_settings'));
+        $parse['preference_skin_selector'] = $this->skinsAvailableCombo();
         $parse['preference_planet_sort'] = $this->planetSortCombo();
         $parse['preference_planet_sort_sequence'] = $this->planetOrderCombo();
         $parse['preference_spy_probes'] = $this->_user_query['preference_spy_probes'];
@@ -763,6 +764,31 @@ class UsersController extends BaseController
         } else {
             return '<option value="">-</option>';
         }
+    }
+
+    /**
+     * method skinsAvailableCombo
+     * param
+     * return planet sort combo
+     */
+    private function skinsAvailableCombo()
+    {
+        $sort = '';
+        $sort_types = [
+            0 => $this->langs->line('us_user_preference_skin_op1'),
+            1 => $this->langs->line('us_user_preference_skin_op2'),
+            2 => $this->langs->line('us_user_preference_skin_op3'),
+            3 => $this->langs->line('us_user_preference_skin_op4'),
+            4 => $this->langs->line('us_user_preference_skin_op5'),
+            5 => $this->langs->line('us_user_preference_skin_op6'),
+            6 => $this->langs->line('us_user_preference_skin_op7'),
+        ];
+
+        foreach ($sort_types as $id => $name) {
+            $sort .= "<option value =\"{$id}\"" . (($this->_user_query['preference_skin_selector'] == $id) ? ' selected' : '') . ">{$name}</option>";
+        }
+
+        return $sort;
     }
 
     /**

@@ -79,10 +79,10 @@
                         <input type="submit" name="apply_settings" value="{pr_use_settings}">
                     </th>
                 </tr>
-                <tr {hide_vacation_invalid}>
+                <tr>
                     <td class="c" colspan="2">{pr_skins}</td>
                 </tr>
-                <tr {hide_vacation_invalid}>
+                <tr>
                     <th>{pr_skin_selection}:</th>
                     <th>
                         <select name="preference_skin_selector">

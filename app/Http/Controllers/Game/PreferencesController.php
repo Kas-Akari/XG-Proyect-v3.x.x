@@ -118,6 +118,7 @@ class PreferencesController extends BaseController
             $this->validateNewUserName($preferences);
             $this->validateNewPassword($preferences);
             $this->validateNewEmail($preferences);
+            $this->validateSkinSelector($preferences);
             $this->validateSpyProbes($preferences);
             $this->validatePlanetSort($preferences);
             $this->validatePlanetSortSequence($preferences);
@@ -394,6 +395,17 @@ class PreferencesController extends BaseController
                 $this->error = $this->langs->line('pr_error_wrong_password');
             }
         }
+    }
+
+    /**
+     * Validate skin selector
+     *
+     * @param array $preferences
+     * @return void
+     */
+    private function validateSkinSelector(array $preferences): void
+    {
+        $this->fields_to_update['preference_skin_selector'] = $preferences['preference_skin_selector'];
     }
 
     /**

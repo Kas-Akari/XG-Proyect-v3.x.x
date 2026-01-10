@@ -15,6 +15,14 @@
                             <td colspan="2">{us_user_settings_general_title}</td>
                         </tr>
                         <tr>
+                            <td>{us_user_skin_selection}</td>
+                            <td>
+                                <select name="preference_skin_selector" class="form-control">
+                                    {preference_skin_selector}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>{us_user_preference_planet_sort}</td>
                             <td>
                                 <select name="preference_planet_sort" class="form-control">
