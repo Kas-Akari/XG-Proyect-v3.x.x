@@ -136,6 +136,9 @@ class PreferencesController extends BaseController
 
     private function buildPage(): void
     {
+        // Genera los bloques {skin}    
+        $this->skinsAvailable();
+
         $this->page->display(
             $this->template->set(
                 'game/preferences_view',
@@ -144,7 +147,6 @@ class PreferencesController extends BaseController
                     $this->setMessageDisplay(),
                     $this->setUserData(),
                     [
-                        # FIXXME: 'skin' => $this->skinsAvailable(),
                         'preference_spy_probes' => $this->preferences->getCurrentPreference()->getPreferenceSpyProbes(),
                         'sort_planet' => $this->sortPlanetOptions(),
                         'sort_sequence' => $this->sortSequenceOptions(),
@@ -198,21 +200,19 @@ class PreferencesController extends BaseController
      *
      * @return array
      */
-    private function skinsAvailable(): array
+    private function skinsAvailable(): void
     {
-        $skins_available = [];
-
         foreach (PrefEnum::skins as $skin => $value) {
-            $skins_available[] = [
+            $this->template->assignBlockVars('skin', [
                 'value' => $value,
                 'selected' => (
-                    $value == $this->preferences->getCurrentPreference()->getPreferenceSkinSelector() ? 'selected="selected"' : ''
+                    $value == $this->preferences->getCurrentPreference()->getPreferenceSkinSelector()
+                        ? 'selected="selected"'
+                        : ''
                 ),
                 'text' => $this->langs->line('pr_skin_' . $skin),
-            ];
+            ]);
         }
-
-        return $skins_available;
     }
 
     /**
