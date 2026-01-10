@@ -144,6 +144,7 @@ class PreferencesController extends BaseController
                     $this->setMessageDisplay(),
                     $this->setUserData(),
                     [
+                        # FIXXME: 'skin' => $this->skinsAvailable(),
                         'preference_spy_probes' => $this->preferences->getCurrentPreference()->getPreferenceSpyProbes(),
                         'sort_planet' => $this->sortPlanetOptions(),
                         'sort_sequence' => $this->sortSequenceOptions(),
