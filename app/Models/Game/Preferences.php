@@ -17,12 +17,20 @@ class Preferences extends Model
      */
     public function getAllPreferencesByUserId(int $user_id): array
     {
-        return $this->db->queryFetchAll(
+        $result = $this->db->queryFetchAll(
             'SELECT
                 p.*
             FROM `' . PREFERENCES . "` p
             WHERE p.`preference_user_id` = '" . $user_id . "';"
         ) ?? [];
+        #FIXME FIX TEMPORAL para meter el campo manualmente sin tener que modificar de momento la BBDD
+        // Añadimos el campo manualmente a cada preferencia (por ejemplo, valor por defecto 0)
+        foreach ($result as &$preference) {
+            $preference['preference_skin_selector'] = 0; // O el valor que te interesa para pruebas
+        }
+        unset($preference); // Buena práctica por referencia
+
+        return $result;
     }
 
     /**
