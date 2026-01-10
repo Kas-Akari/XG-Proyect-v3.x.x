@@ -83,7 +83,7 @@
                     <td class="c" colspan="2">{pr_skins}</td>
                 </tr>
                 <tr>
-                    <th>{pr_skin_selection}:</th>
+                    <th>{pr_skin_selector}:</th>
                     <th>
                         <select name="preference_skin_selector">
                             {skin}

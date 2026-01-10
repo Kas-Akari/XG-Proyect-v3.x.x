@@ -15,7 +15,7 @@
                             <td colspan="2">{us_user_settings_general_title}</td>
                         </tr>
                         <tr>
-                            <td>{us_user_skin_selection}</td>
+                            <td>{us_user_skin_selector}</td>
                             <td>
                                 <select name="preference_skin_selector" class="form-control">
                                     {preference_skin_selector}
