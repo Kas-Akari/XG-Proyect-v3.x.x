@@ -18,4 +18,14 @@ abstract class PreferencesEnumerator
         'up' => 0,
         'down' => 1,
     ];
+
+    public const skins = [
+        'xgproyect' => 0,
+        'epicblue' => 1,
+        'epicblueII' => 2,
+        'evolution' => 3,
+        'evolutionII' => 4,
+        'reallive' => 5,
+        'dalmako' => 6,
+    ];
 }

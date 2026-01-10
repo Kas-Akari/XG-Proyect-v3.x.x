@@ -87,6 +87,10 @@ class PreferencesController extends BaseController
             'new_user_password' => FILTER_UNSAFE_RAW,
             'new_user_email' => FILTER_VALIDATE_EMAIL,
             'confirmation_email_password' => FILTER_UNSAFE_RAW,
+            'preference_skin_selector' => [
+                'filter' => FILTER_VALIDATE_INT,
+                'options' => ['default' => 0, 'min_range' => 0, 'max_range' => (count(PrefEnum::skins) - 1)],
+            ],
             'preference_spy_probes' => [
                 'filter' => FILTER_VALIDATE_INT,
                 'options' => ['default' => 1, 'min_range' => 1, 'max_range' => 99],
@@ -185,6 +189,28 @@ class PreferencesController extends BaseController
             'hide_nickname_change' => ($this->preferences->isNickNameChangeAllowed() ? '' : 'style="display: none"'),
             'user_email' => $this->user['user_email'],
         ];
+    }
+
+    /**
+     * Returns an array with the different skins available
+     *
+     * @return array
+     */
+    private function skinsAvailable(): array
+    {
+        $skins_available = [];
+
+        foreach (PrefEnum::skins as $skin => $value) {
+            $skins_available[] = [
+                'value' => $value,
+                'selected' => (
+                    $value == $this->preferences->getCurrentPreference()->getPreferencePlanetSort() ? 'selected="selected"' : ''
+                ),
+                'text' => $this->langs->line('pr_skin_' . $skin),
+            ];
+        }
+
+        return $skins_available;
     }
 
     /**

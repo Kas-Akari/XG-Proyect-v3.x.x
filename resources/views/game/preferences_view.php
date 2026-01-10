@@ -80,6 +80,19 @@
                     </th>
                 </tr>
                 <tr {hide_vacation_invalid}>
+                    <td class="c" colspan="2">{pr_skins}</td>
+                </tr>
+                <tr {hide_vacation_invalid}>
+                    <th>{pr_skin_selection}:</th>
+                    <th>
+                        <select name="preference_skin_selector">
+                            {skin}
+                            <option value="{value}"{selected}>{text}</option>
+                            {/skin}
+                        </select>
+                    </th>
+                </tr>
+                <tr {hide_vacation_invalid}>
                     <td class="c" colspan="2">{pr_general}</td>
                 </tr>
                 <tr {hide_vacation_invalid}>
