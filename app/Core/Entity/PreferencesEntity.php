@@ -44,6 +44,16 @@ class PreferencesEntity extends Entity
     }
 
     /**
+     * Return the preference skin selector
+     *
+     * @return int
+     */
+    public function getPreferenceSkinSelector(): int
+    {
+        return (int) $this->data['preference_skin_selector'];
+    }
+
+    /**
      * Return the preference spy probes
      *
      * @return int

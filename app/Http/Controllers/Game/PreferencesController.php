@@ -204,7 +204,7 @@ class PreferencesController extends BaseController
             $skins_available[] = [
                 'value' => $value,
                 'selected' => (
-                    $value == $this->preferences->getCurrentPreference()->getPreferencePlanetSort() ? 'selected="selected"' : ''
+                    $value == $this->preferences->getCurrentPreference()->getPreferenceSkinSelector() ? 'selected="selected"' : ''
                 ),
                 'text' => $this->langs->line('pr_skin_' . $skin),
             ];
