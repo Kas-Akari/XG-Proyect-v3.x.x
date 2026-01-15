@@ -702,7 +702,7 @@ class Missions extends Model
     {
         $this->db->query(
             'UPDATE ' . FLEETS . " AS f SET
-            `fleet_resource_' . $resource . '` = `fleet_resource_' . $resource . '` + '" . $amount . "',
+            `fleet_resource_" . $resource . "` = `fleet_resource_" . $resource . "` + '" . $amount . "',
             `fleet_mess` = '1'
             WHERE `fleet_id` = '" . $fleetId . "';"
         );
