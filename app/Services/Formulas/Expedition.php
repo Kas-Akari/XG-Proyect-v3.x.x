@@ -10,7 +10,7 @@ class Expedition
     public function getMaxExpeditionPoints(int $topPlayerPoints): int
     {
         if ($topPlayerPoints < 10000) {
-            return 200
+            return 200;
         }
 
         if ($topPlayerPoints < 100000) {
