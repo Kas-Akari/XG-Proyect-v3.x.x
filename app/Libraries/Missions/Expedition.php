@@ -12,7 +12,7 @@ class Expedition extends Missions
 {
     private FmlExpedition $fmlExpedition;
     private int $resourceExpeditionPoints = 0;
-    private int $shipExpeditionPoints = 0;
+    private int $maxShipsFindStructuralIntegrityPoints = 0;
     private int $fleetCapacity = 0;
 
     public function __construct()
@@ -141,21 +141,15 @@ class Expedition extends Missions
         $maxResourceFindExpeditionPoints = $this->fmlExpedition->getMaxExpeditionPoints(
             $topPlayerPoints
         );
-        $maxShipsFindExpeditionPoints = $this->fmlExpedition->getMaxShipsExpeditionPoints(
+        $this->maxShipsFindStructuralIntegrityPoints = $this->fmlExpedition->getMaxShipsStructuralIntegrityPoints(
             $topPlayerPoints
         );
 
         $this->resourceExpeditionPoints = $expeditionPoints;
-        $this->shipExpeditionPoints = $expeditionPoints;
 
         // limit the amount of resources that can be found
         if ($expeditionPoints > $maxResourceFindExpeditionPoints) {
             $this->resourceExpeditionPoints = $maxResourceFindExpeditionPoints;
-        }
-
-        // limit the amount of ships that can be found
-        if ($expeditionPoints > $maxShipsFindExpeditionPoints) {
-            $this->shipExpeditionPoints = $maxShipsFindExpeditionPoints;
         }
     }
 
@@ -195,17 +189,25 @@ class Expedition extends Missions
      */
     private function resultShips(array $fleet): void
     {
+        $priceList = Objects::getInstance()->getPrice();
+
         $shipsRatio = $this->fmlExpedition->getShipsObtainableChances();
-        $foundChance = $this->shipExpeditionPoints / $fleet['fleet_amount'];
+        $structuralIntegrityAvailable = $this->maxShipsFindStructuralIntegrityPoints;
         $currentFleet = FleetsLib::getFleetShipsArray($fleet['fleet_array']);
         $foundShip = [];
+        $failedCaptureCounter = 0;
 
         for ($ship = 202; $ship <= 215; $ship++) {
-            if (isset($currentFleet[$ship]) && $currentFleet[$ship] != 0) {
-                $foundShip[$ship] = round($currentFleet[$ship] * $shipsRatio[$ship] * $foundChance) + 1;
+            if (isset($currentFleet[$ship]) && $currentFleet[$ship] != 0 && $structuralIntegrityAvailable > 0 && $failedCaptureCounter < 3 ) {
+                $structuralIntegrityOfCurrentShip = $this->fmlExpedition->calculateExpeditionPoints(($priceList[$ship]['metal'] + $priceList[$ship]['crystal']));
+                $Nmax = intval($structuralIntegrityAvailable / $structuralIntegrityOfCurrentShip);
+                $foundShip[$ship] = mt_rand(0,$Nmax);
+                $structuralIntegrityAvailable -= $structuralIntegrityOfCurrentShip * $Nmax;
 
                 if ($foundShip[$ship] > 0) {
                     $currentFleet[$ship] += $foundShip[$ship];
+                } else {
+                    $failedCaptureCounter++;
                 }
             }
         }

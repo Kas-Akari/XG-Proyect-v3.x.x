@@ -44,9 +44,19 @@ class Expedition
         return 25000;
     }
 
-    public function getMaxShipsExpeditionPoints(int $topPlayerPoints): int
+    public function getMaxShipsStructuralIntegrityPoints(int $topPlayerPoints): int
     {
-        return $this->getMaxExpeditionPoints($topPlayerPoints) * 100;
+        //https://forum.es.ogame.gameforge.com/forum/thread/1895-gu%C3%ADa-de-expediciones/?postID=30515#post30515
+        //1. First we get a random number to determine the variant of event (normal, large or xl)
+        $variantOfEvent = $this->calculateResourceTypeObtained();
+        //2.1 Then we calculate the max expedition points as Limit of PE * (multiplier (obtained via passing to
+        //getResourceSourceSizeMultChances the variant of the event) / 2)
+        $maxShipStructuralIntegrityPoints = $this->getMaxExpeditionPoints($topPlayerPoints) * ($this->getResourceSourceSizeMultChances($variantOfEvent) / 2);
+        //2.2. If the calculated max expedition points is less than 10.000, we set it to 10.000
+        if ($maxShipStructuralIntegrityPoints < 10000){
+            $maxShipStructuralIntegrityPoints = 10000;
+        }
+        return $maxShipStructuralIntegrityPoints;
     }
 
     public function calculateExpeditionPoints(int $structuralIntegrity): int
@@ -169,14 +179,27 @@ class Expedition
     public function getResourceSourceSizeMultChances(string $discoveryType): int
     {
         if ($discoveryType === 'large') {
-            return mt_rand(50, 100);
+            return $this->getEvenRandomNumber(50, 100);
         }
 
         if ($discoveryType === 'xl') {
-            return mt_rand(100, 200);
+            return $this->getEvenRandomNumber(100, 200);
         }
 
-        return mt_rand(10, 50); // $discoveryType === 'normal'
+        return $this->getEvenRandomNumber(10, 50); // $discoveryType === 'normal'
+    }
+
+    private function getEvenRandomNumber(int $min, int $max) : int
+    {
+        //Calculate the 1st and last possible even
+        $start = ($min % 2 == 0) ? $min : $min + 1;
+        $end   = ($max % 2 == 0) ? $max : $max - 1;
+
+        //Calculate how many pairs are in the interval
+        $count = (($end - $start) / 2) + 1;
+
+        //Choose a random index and calculate the random even number on the interval 
+        return $start + (mt_rand(0, $count - 1) * 2);
     }
 
     public function getResourceFoundAmount(int $chancesMultiplier, int $expeditionPoints, string $resourceType): int
