@@ -48,7 +48,7 @@ class Expedition
     {
         //https://forum.es.ogame.gameforge.com/forum/thread/1895-gu%C3%ADa-de-expediciones/?postID=30515#post30515
         //1. First we get a random number to determine the variant of event (normal, large or xl)
-        $variantOfEvent = $this->calculateResourceTypeObtained();
+        $variantOfEvent = $this->calculateResourceSourceSize();
         //2.1 Then we calculate the max expedition points as Limit of PE * (multiplier (obtained via passing to
         //getResourceSourceSizeMultChances the variant of the event) / 2)
         $maxShipStructuralIntegrityPoints = $this->getMaxExpeditionPoints($topPlayerPoints) * ($this->getResourceSourceSizeMultChances($variantOfEvent) / 2);

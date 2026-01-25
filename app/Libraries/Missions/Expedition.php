@@ -191,7 +191,7 @@ class Expedition extends Missions
     {
         $priceList = Objects::getInstance()->getPrice();
 
-        $shipsRatio = $this->fmlExpedition->getShipsObtainableChances();
+        #$shipsRatio = $this->fmlExpedition->getShipsObtainableChances(); #No longer used, it's from the old code but maybe it becomes usefull again
         $structuralIntegrityAvailable = $this->maxShipsFindStructuralIntegrityPoints;
         $currentFleet = FleetsLib::getFleetShipsArray($fleet['fleet_array']);
         $foundShip = [];
@@ -199,7 +199,7 @@ class Expedition extends Missions
 
         for ($ship = 202; $ship <= 215; $ship++) {
             if (isset($currentFleet[$ship]) && $currentFleet[$ship] != 0 && $structuralIntegrityAvailable > 0 && $failedCaptureCounter < 3 ) {
-                $structuralIntegrityOfCurrentShip = $this->fmlExpedition->calculateExpeditionPoints(($priceList[$ship]['metal'] + $priceList[$ship]['crystal']));
+                $structuralIntegrityOfCurrentShip = $priceList[$ship]['metal'] + $priceList[$ship]['crystal'];
                 $Nmax = intval($structuralIntegrityAvailable / $structuralIntegrityOfCurrentShip);
                 $numberOfNewShips = mt_rand(0,$Nmax);
                 $foundShip[$ship] = $numberOfNewShips;
