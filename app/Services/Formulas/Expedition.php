@@ -53,9 +53,9 @@ class Expedition
         //getResourceSourceSizeMultChances the variant of the event) / 2)
         $maxShipStructuralIntegrityPoints = $this->getMaxExpeditionPoints($topPlayerPoints) * ($this->getResourceSourceSizeMultChances($variantOfEvent) / 2);
         //2.2. If the calculated max expedition points is less than 10.000, we set it to 10.000
-        if ($maxShipStructuralIntegrityPoints < 10000){
+        /*if ($maxShipStructuralIntegrityPoints < 10000){
             $maxShipStructuralIntegrityPoints = 10000;
-        }
+        }*/
         return $maxShipStructuralIntegrityPoints;
     }
 
