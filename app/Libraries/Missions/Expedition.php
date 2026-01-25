@@ -201,8 +201,9 @@ class Expedition extends Missions
             if (isset($currentFleet[$ship]) && $currentFleet[$ship] != 0 && $structuralIntegrityAvailable > 0 && $failedCaptureCounter < 3 ) {
                 $structuralIntegrityOfCurrentShip = $this->fmlExpedition->calculateExpeditionPoints(($priceList[$ship]['metal'] + $priceList[$ship]['crystal']));
                 $Nmax = intval($structuralIntegrityAvailable / $structuralIntegrityOfCurrentShip);
-                $foundShip[$ship] = mt_rand(0,$Nmax);
-                $structuralIntegrityAvailable -= $structuralIntegrityOfCurrentShip * $Nmax;
+                $numberOfNewShips = mt_rand(0,$Nmax);
+                $foundShip[$ship] = $numberOfNewShips;
+                $structuralIntegrityAvailable -= $structuralIntegrityOfCurrentShip * $numberOfNewShips;
 
                 if ($foundShip[$ship] > 0) {
                     $currentFleet[$ship] += $foundShip[$ship];
