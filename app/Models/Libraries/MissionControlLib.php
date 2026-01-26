@@ -38,7 +38,7 @@ class MissionControlLib extends Model
             WHERE f.`fleet_start_time` <= '" . time() . "'
                 AND f.`fleet_mess` = '0'
             GROUP BY f.`fleet_id`, sp.`planet_name`, ep.`planet_name`
-            ORDER BY f.`fleet_id` ASC"
+            ORDER BY f.`fleet_start_time` ASC"
         );
     }
 
@@ -74,7 +74,7 @@ class MissionControlLib extends Model
             WHERE f.`fleet_end_time` <= '" . time() . "'
                 AND f.`fleet_mess` <> '0'
             GROUP BY f.`fleet_id`, sp.`planet_name`, ep.`planet_name`
-            ORDER BY f.`fleet_id` ASC"
+            ORDER BY f.`fleet_end_time` ASC"
         );
     }
 }
