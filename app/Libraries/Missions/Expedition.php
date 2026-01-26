@@ -230,6 +230,7 @@ class Expedition extends Missions
             }
         }
 
+        $this->missionsModel->updateFoundShipsAndDefensePoints($fleet['fleet_owner'], $foundShip);
         $this->missionsModel->updateFleetArrayById([
             'ships' => FleetsLib::setFleetShipsArray($newShips),
             'fleet_id' => $fleet['fleet_id'],
