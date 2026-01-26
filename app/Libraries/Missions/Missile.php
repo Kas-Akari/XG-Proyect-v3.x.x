@@ -2,6 +2,7 @@
 
 namespace App\Libraries\Missions;
 
+use App\Core\Objects;
 use App\Libraries\FormatLib;
 use App\Libraries\Functions;
 
@@ -116,7 +117,7 @@ class Missile extends Missions
             ];
 
             if (isset($result) && count($result) > 0) {
-                foreach (parent::$objects->getObjectsList('defense') as $defense_id) {
+                foreach (Objects::getInstance()->getObjectsList('defense') as $defense_id) {
                     $message .= FormatLib::prettyNumber($target_data[$this->resource[$defense_id]]) . ' ' . $this->langs->line($this->resource[$defense_id]);
                     if (isset($result[$defense_id])) {
                         $message .= ' (-' . FormatLib::prettyNumber($result[$defense_id]) . ')';
