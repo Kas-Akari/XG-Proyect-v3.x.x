@@ -56,6 +56,23 @@ class StatisticsLibrary extends Model
         );
     }
 
+    public function modifyPoints($what, $points, $user_id)
+    {
+        $this->db->query(
+            'UPDATE ' . USERS_STATISTICS . ' SET
+                `user_statistic_' . $what . "_points` = '" . $points . "' + `user_statistic_". $what . "_points`
+            WHERE `user_statistic_user_id` = '" . $user_id . "'"
+        );
+    }
+    
+    public function deletePoints($what)
+    {
+        $this->db->query(
+            'UPDATE ' . USERS_STATISTICS . ' SET
+                `user_statistic_' . $what . "_points` = '0'"
+        );
+    }
+
     /**
      * Fetch all users statistics
      *
