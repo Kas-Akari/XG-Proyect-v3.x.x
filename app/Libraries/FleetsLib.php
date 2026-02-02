@@ -465,14 +465,10 @@ class FleetsLib
                     $EventString .= $lang->line('ev_with_the_mission_of');
                     break;
             }
-            
-            $missionText = FormatLib::spanElement(
-                $lang->language['type_mission'][$MissionType],
-                'mission-style'
-            );
+
             $EventString .= self::fleetResourcesPopup(
                 $fleetRow,
-                $missionText,
+                $lang->language['type_mission'][$MissionType],
                 $FleetPrefix . $FleetStyle[$MissionType]
             );
         }
