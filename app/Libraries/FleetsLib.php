@@ -167,10 +167,7 @@ class FleetsLib
             $fleetRow['fleet_start_planet']
         );
 
-        $link = 'game.php?page=galaxy&mode=3&galaxy=' .
-            $fleetRow['fleet_start_galaxy'] . '&system=' . $fleetRow['fleet_start_system'];
-
-        return UrlHelper::setUrl($link, $coords, '', $fleetType);
+        return $coords;
     }
 
     public static function targetLink(array $fleetRow, string $fleetType): string
@@ -181,10 +178,7 @@ class FleetsLib
             $fleetRow['fleet_end_planet']
         );
 
-        $link = 'game.php?page=galaxy&mode=3&galaxy=' .
-            $fleetRow['fleet_end_galaxy'] . '&system=' . $fleetRow['fleet_end_system'];
-
-        return UrlHelper::setUrl($link, $coords, '', $fleetType);
+        return $coords;
     }
 
     /**
@@ -471,10 +465,14 @@ class FleetsLib
                     $EventString .= $lang->line('ev_with_the_mission_of');
                     break;
             }
-
+            
+            $missionText = FormatLib::spanElement(
+                $lang->language['type_mission'][$MissionType],
+                'mission-style'
+            );
             $EventString .= self::fleetResourcesPopup(
                 $fleetRow,
-                $lang->language['type_mission'][$MissionType],
+                $missionText,
                 $FleetPrefix . $FleetStyle[$MissionType]
             );
         }

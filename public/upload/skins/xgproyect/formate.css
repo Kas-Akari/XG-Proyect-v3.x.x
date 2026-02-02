@@ -236,7 +236,7 @@ div.z
 
 a
 {
-  color                : #E6EBFB;
+  color                : #E6EBFB !important;
   text-decoration      : none;
   font-weight          : bold;
 }

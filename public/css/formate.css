@@ -404,3 +404,7 @@ vertical-align		 : middle;
     color: lime
 }
 
+.mission-style {
+    color: #fff !important;
+    font-weight: bold !important;
+}
