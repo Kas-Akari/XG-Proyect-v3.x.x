@@ -75,8 +75,8 @@ $lang = [
     'exp_nothing_15' => 'La tripulación se fué por las ramas y dedicó el tiempo a buscar el WiFi universal. Tras muchos intentos, solo lograron conectar con memes antiguos y volvieron sin nada útil.',
     'exp_nothing_16' => 'Debido a que un alien mencionó al capitán sobre el planeta de la chocolata, este se sumió en sus pensamientos durante todo el tiempo canturreando. Cuando volvió en sí preguntó a la tripulación ¿Hablábamos de chocolate?. Vuelven sin nada útil.',
 
-    // lost ships
-    'exp_lost_1' => '',
+    // lost ships. The 1st one is by a black hole
+    'exp_lost_1' => 'AGUJERO NEGRO. El capitán de la flota decidió impresionar a una chica de la tripulación acercándose demasiado a un agujero negro. La gravedad del agujero negro causó grandes daños en la flota.',
     'exp_lost_2' => '',
 
     // exploration status

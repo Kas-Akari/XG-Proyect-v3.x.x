@@ -237,7 +237,7 @@ class Expedition extends Missions
         ]);
 
         $message = sprintf(
-            $this->langs->line('exp_new_ships_' . mt_rand(1, 5)),
+            $this->langs->line('exp_new_ships_' . mt_rand(1, 7)),
             $found_ship_message
         );
 
@@ -261,9 +261,10 @@ class Expedition extends Missions
 
         // expedition resources obtained calculations
         $typeObtained = $this->fmlExpedition->calculateResourceTypeObtained();
+        $resourceSize = $this->fmlExpedition->calculateResourceSourceSize();
         $foundAmount = $this->fmlExpedition->getResourceFoundAmount(
             $this->fmlExpedition->getResourceSourceSizeMultChances(
-                $typeObtained
+                $resourceSize
             ),
             $this->resourceExpeditionPoints,
             $typeObtained
@@ -448,7 +449,7 @@ class Expedition extends Missions
     {
         $this->expeditionMessage(
             $fleet['fleet_owner'],
-            $this->langs->line('exp_nothing_' . mt_rand(1, 6)),
+            $this->langs->line('exp_nothing_' . mt_rand(1, 16)),
             (int) $fleet['fleet_end_stay'],
             [
                 'galaxy' => $fleet['fleet_end_galaxy'],
