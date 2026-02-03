@@ -99,8 +99,8 @@ class Expedition
         // probability ratios - we add a weight
         $discoveryTypes = [
             'small' => 8900, // 89%
-            'medium' => 2400, // 10%
-            'large' => 750, // 1%
+            'medium' => 1000, // 10%
+            'large' => 100, // 1%
         ];
         $randomNumber = mt_rand(0, array_sum($discoveryTypes));
         $sum = 0;
