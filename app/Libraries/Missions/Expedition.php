@@ -168,9 +168,14 @@ class Expedition extends Missions
             $this->fmlExpedition->calculateDarkMatterSourceSize()
         );
 
+        $message = sprintf(
+            $this->langs->line('exp_dm_' . mt_rand(1, 5)),
+            $darkMatterFound
+        );
+
         $this->expeditionMessage(
             (int) $fleet['fleet_owner'],
-            $this->langs->line('exp_dm_' . mt_rand(1, 5)),
+            $message,
             (int) $fleet['fleet_end_stay'],
             [
                 'galaxy' => $fleet['fleet_end_galaxy'],

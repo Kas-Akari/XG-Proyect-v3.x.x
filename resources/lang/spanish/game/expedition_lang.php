@@ -36,11 +36,11 @@ $lang = [
     'exp_trader' => 'Tu flota en expedición tuvo un corto contacto con una raza de aliens un poco vergonzosa. Estos anunciaron que van a enviar a un representante con bienes de comercio a tus mundos.', // ok
 
     // found dark matter
-    'exp_dm_1' => 'La expedición siguió algunas señales fuera de lo común y descrubrió un asteroide. En el núcle del asteroide se encontraba una pequeña cantidad de Materia Oscura. El asteroide fue transportado a bordo y los exploradores intentan extrar la Materia Oscura.<br><br>Se ha capturado %s de %s.', // ok
-    'exp_dm_2' => 'La expedición detectó una anomalía gravitacional y, tras investigar, se encontró una pequeña cápsula de Materia Oscura flotando en el vacío.<br><br>Se ha capturado %s de %s.',
-    'exp_dm_3' => 'Un campo de energía desconocido rodeaba una nube de Materia Oscura. Los científicos lograron extraer una cantidad significativa para su estudio.<br><br>Se ha capturado %s de %s.',
-    'exp_dm_4' => 'En las profundidades de una nebulosa, la expedición halló fragmentos de Materia Oscura adheridos a restos de antiguas naves.<br><br>Se ha capturado %s de %s.',
-    'exp_dm_5' => 'Un artefacto alienígena contenía un núcleo de Materia Oscura. Tras un delicado proceso de extracción, la expedición consiguió recuperarlo.<br><br>Se ha capturado %s de %s.',
+    'exp_dm_1' => 'La expedición siguió algunas señales fuera de lo común y descrubrió un asteroide. En el núcleo del asteroide se encontraba una pequeña cantidad de Materia Oscura. El asteroide fue transportado a bordo y los exploradores intentan extrar la Materia Oscura.<br><br>Se ha capturado %s de Materia Oscura.', // ok
+    'exp_dm_2' => 'La expedición detectó una anomalía gravitacional y, tras investigar, se encontró una pequeña cápsula de Materia Oscura flotando en el vacío.<br><br>Se ha capturado %s de Materia Oscura.',
+    'exp_dm_3' => 'Un campo de energía desconocido rodeaba una nube de Materia Oscura. Los científicos lograron extraer una cantidad significativa para su estudio.<br><br>Se ha capturado %s de Materia Oscura.',
+    'exp_dm_4' => 'En las profundidades de una nebulosa, la expedición halló fragmentos de Materia Oscura adheridos a restos de antiguas naves.<br><br>Se ha capturado %s de Materia Oscura.',
+    'exp_dm_5' => 'Un artefacto alienígena contenía un núcleo de Materia Oscura. Tras un delicado proceso de extracción, la expedición consiguió recuperarlo.<br><br>Se ha capturado %s de Materia Oscura.',
 
     // delay
     'exp_delay_1' => 'Tu expedición entro en un sector lleno de tormentas de partículas. Esto provocó que los depósitos de energía se sobrecargaran y la mayoría de los sistemas principales de las naves se averiaron. Tus mecánicos fueron capaces de evitar lo peor pero la flota va a volver con un gran retraso.', // ok
