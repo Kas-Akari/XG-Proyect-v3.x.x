@@ -56,17 +56,17 @@
                         <tr height="20">
                             <th>{metal}</th>
                             <th><a href="javascript:maxResource('1');">{fl_max}</a></th>
-                            <th><input name="resource1" size="10" onchange="calculateTransportCapacity();" type="text"></th>
+                            <th><input name="resource1" size="10" onchange="calculateTransportCapacity();" type="number"></th>
                         </tr>
                         <tr height="20">
                             <th>{crystal}</th>
                             <th><a href="javascript:maxResource('2');">{fl_max}</a></th>
-                            <th><input name="resource2" size="10" onchange="calculateTransportCapacity();" type="text"></th>
+                            <th><input name="resource2" size="10" onchange="calculateTransportCapacity();" type="number"></th>
                         </tr>
                         <tr height="20">
                             <th>{deuterium}</th>
                             <th><a href="javascript:maxResource('3');">{fl_max}</a></th>
-                            <th><input name="resource3" size="10" onchange="calculateTransportCapacity();" type="text"></th>
+                            <th><input name="resource3" size="10" onchange="calculateTransportCapacity();" type="number"></th>
                         </tr>
                         <tr height="20">
                             <th>{fl_resources_left}</th>
