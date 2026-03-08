@@ -115,7 +115,8 @@ class StatisticsLibrary
         $this->time = time();
 
         // INITIAL MEMORY
-        $result['initial_memory'] = [round(memory_get_usage() / 1024, 1), round(memory_get_usage(1) / 1024, 1)];
+        $result['initial_memory'] = [round(memory_get_usage() / 1024, 1),
+                                     round(memory_get_usage(1) / 1024, 1)];
 
         // MAKE STATISTICS FOR USERS
         self::makeUserRank();

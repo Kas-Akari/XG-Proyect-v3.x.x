@@ -59,7 +59,6 @@ class RebuildHighscoresController extends BaseController
         * and adds these to the corresponding user
         */
         $fleetsModel = new Fleets();
-        $fleetsModel->getAllFleets();
         $modelsObject->deletePoints("ships");
         foreach ($fleetsModel->getAllFleets() as $fleet) {
             $totalPoints = 0;
@@ -72,14 +71,14 @@ class RebuildHighscoresController extends BaseController
         // Sums up all ships on planets and adds these to the corresponding user
         $fleet = new Fleet();
         $stationaryFleets = $fleet->getAllShipsWithUser();
-        foreach ($stationaryFleets as $fleet) {
+        foreach ($stationaryFleets as $fleetStationary) {
             $totalPoints = 0;
-            foreach ($fleet as $ship => $amount) {
+            foreach ($fleetStationary as $ship => $amount) {
                 if ($ship != 'planet_user_id') {
                     $totalPoints += Statistics::calculatePoints(array_search($ship, Objects::getInstance()->getObjects()),1) * $amount;
                 }
             }
-            $modelsObject->modifyPoints("ships", $totalPoints, $fleet['planet_user_id']);
+            $modelsObject->modifyPoints("ships", $totalPoints, $fleetStationary['planet_user_id']);
         }
 
 
@@ -111,15 +110,15 @@ class RebuildHighscoresController extends BaseController
         return [
             'memory_p' => strtr('%i / %m', [
                 '%i' => Format::prettyBytes($this->result['memory_peak'][0]),
-                '%m' => Format::prettyBytes($this->result['memory_peak'][0]),
+                '%m' => Format::prettyBytes($this->result['memory_peak'][1]),
             ]),
             'memory_i' => strtr('%i / %m', [
                 '%i' => Format::prettyBytes($this->result['initial_memory'][0]),
-                '%m' => Format::prettyBytes($this->result['initial_memory'][0]),
+                '%m' => Format::prettyBytes($this->result['initial_memory'][1]),
             ]),
             'memory_e' => strtr('%i / %m', [
                 '%i' => Format::prettyBytes($this->result['end_memory'][0]),
-                '%m' => Format::prettyBytes($this->result['end_memory'][0]),
+                '%m' => Format::prettyBytes($this->result['end_memory'][1]),
             ]),
             'alert' => Administration::saveMessage('ok', strtr(
                 $this->langs->line('sb_stats_update'),
