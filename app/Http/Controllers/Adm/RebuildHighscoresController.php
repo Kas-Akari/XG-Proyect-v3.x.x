@@ -15,7 +15,7 @@ use App\Models\Game\Fleet;
 use App\Models\Adm\Fleets;
 use App\Libraries\FleetsLib;
 
-class RebuildHighscoresController extends BaseController
+class RebuildhighscoresController extends BaseController
 {
     private array $result = [];
 
