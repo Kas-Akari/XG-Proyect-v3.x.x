@@ -334,8 +334,7 @@ h1
 #content {
 	position:absolute;
 	left:190px;
-	scrollbars:none;
-	overflow:auto;
+	overflow:hidden;
 	width:80%;
 	height:100%;
 }
