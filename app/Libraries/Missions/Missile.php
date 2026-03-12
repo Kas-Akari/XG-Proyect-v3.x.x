@@ -53,11 +53,14 @@ class Missile extends Missions
 
             if ($target_data['defense_anti-ballistic_missile'] >= $fleet_row['fleet_amount']) {
                 $message = $this->langs->line('mis_all_destroyed') . '<br>';
-                $amount = $fleet_row['fleet_amount'];
+                $this->missionsModel->updatePlanetDefenses([
+                    'destroyed_query' => '',    //No se destruyen defensas
+                    'amount' => $target_data['defense_anti-ballistic_missile'] - $fleet_row['fleet_amount'],
+                    'planet_id' => $target_data['planet_id'],
+                ]);
             } else {
                 $destroyed_query = '';
-                $result = [];
-                $amount = 0;
+                $result = []; 
 
                 if ($target_data['defense_anti-ballistic_missile'] > 0) {
                     $result[502] = $target_data['defense_anti-ballistic_missile'];
@@ -92,10 +95,11 @@ class Missile extends Missions
                     }
                 }
 
-                if ($destroyed_query != '') {
+                //NOTA: Ten en cuenta que puedes haber gastado los ABM del defensor sin destruir defensas
+                if ($destroyed_query != '' || $target_data['defense_anti-ballistic_missile'] > 0) {
                     $this->missionsModel->updatePlanetDefenses([
                         'destroyed_query' => $destroyed_query,
-                        'amount' => $amount,
+                        'amount' => 0, //Se han gastado todos los misiles antibalísticos por definición (ABMs<IPMs), pon los ABMs a 0
                         'planet_id' => $target_data['planet_id'],
                     ]);
                 }
