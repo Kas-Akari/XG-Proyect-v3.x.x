@@ -17,11 +17,15 @@ contentbox = document.getElementById('content');
 headerHeight = 81;
 errorbox.style.top=parseInt(headerHeight+messagebox.offsetHeight+5)+'px';
 contentbox.style.top=parseInt(headerHeight+errorbox.offsetHeight+messagebox.offsetHeight+10)+'px';
-if (navigator.appName=='Netscape'){if (window.innerWidth<1020){document.body.scroll='no';}   contentbox.style.height=parseInt(window.innerHeight)-messagebox.offsetHeight-errorbox.offsetHeight-headerHeight-20+'px';
-if(document.getElementById('resources')) {   document.getElementById('resources').style.width=(window.innerWidth*0.4);}}
- else {
-if (window.innerWidth<1020){document.body.scroll='no';}   contentbox.style.height=parseInt(window.innerHeight)-messagebox.offsetHeight-headerHeight-errorbox.offsetHeight-20+'px';document.getElementById('resources').style.width=(window.innerWidth*0.4);
-}for (var i = 0; i < document.links.length; ++i) {
+
+function adjustContentHeight() {
+    contentbox.style.height = parseInt(window.innerHeight) - messagebox.offsetHeight - errorbox.offsetHeight - headerHeight - 20 + 'px';
+}
+
+adjustContentHeight();
+window.addEventListener('resize', adjustContentHeight);
+
+for (var i = 0; i < document.links.length; ++i) {
   if (document.links[i].href.search(/.*redir\.php\?url=.*/) != -1) {
     document.links[i].target = "_blank";
   }
