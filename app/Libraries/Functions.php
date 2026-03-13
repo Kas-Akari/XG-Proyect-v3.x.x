@@ -176,18 +176,14 @@ abstract class Functions
      *
      * @param int $module_id Module ID
      *
-     * @return array
+     * @return int
      */
-    public static function isModuleAccesible($module_id = 0)
+    public static function isModuleAccesible(int $module_id = 0)
     {
         $modules_array = self::readConfig('modules');
         $modules_array = explode(';', $modules_array);
 
-        if ($module_id == 0) {
-            return $modules_array;
-        } else {
-            return $modules_array[$module_id];
-        }
+        return (int) $modules_array[$module_id];
     }
 
     /**
