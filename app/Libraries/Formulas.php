@@ -52,7 +52,7 @@ abstract class Formulas
      */
     public static function getPlanetSize($position, $main = false)
     {
-        // THIS DIAMETERS ARE CALCULATED TO RETURN THE CORRECT AMOUNT OF FIELDS, IT SHOULD WORK AS OGAME.
+        /*// THIS DIAMETERS ARE CALCULATED TO RETURN THE CORRECT AMOUNT OF FIELDS, IT SHOULD WORK AS OGAME.
         $min = [
             9747, 9849, 9899, 11091, 12166,
             12166, 11874, 12921, 12689, 12410,
@@ -63,6 +63,19 @@ abstract class Formulas
             10392, 10488, 11747, 14491, 14900,
             15748, 15588, 15905, 15588, 15000,
             14318, 13416, 11000, 9644, 8602,
+        ];
+        */
+        // THIS DIAMETERS ARE CALCULATED TO RETURN THE CORRECT AMOUNT OF FIELDS, IT SHOULD WORK AS REDESIGNED OGAME.
+        $min = [
+            9798, 10198, 10583, 1863, 11533,
+            12083, 12329, 12490, 12247, 11916,
+            11662, 11180, 10667, 10000, 9487,
+        ];
+
+        $max = [
+            13115, 13266, 13491, 14422, 15232,
+            15556, 15748, 15875, 15684, 15232,
+            14491, 13638, 13115, 12961, 12806,
         ];
 
         $diameter = mt_rand($min[$position - 1], $max[$position - 1]);
