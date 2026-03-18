@@ -146,7 +146,7 @@ class NotesController extends BaseController
                         'note_id' => $note->getNoteId(),
                         'note_time' => Timing::formatExtendedDate($note->getNoteTime()),
                         'note_color' => FormatLib::getImportanceColor($note->getNotePriority()),
-                        'note_title' => $note->getNoteTitle(),
+                        'note_title' => htmlspecialchars($note->getNoteTitle(), ENT_QUOTES, 'UTF-8'),
                     ];
                 }
             }
@@ -217,8 +217,8 @@ class NotesController extends BaseController
                     's' => 2,
                     'note_id' => '<input type="hidden" name="n" value=' . $note_data->getNoteById($note_id)->getNoteId() . '>',
                     'title' => $this->langs->line('nt_edit_note'),
-                    'subject' => $note_data->getNoteById($note_id)->getNoteTitle(),
-                    'text' => $note_data->getNoteById($note_id)->getNoteText(),
+                    'subject' => htmlspecialchars($note_data->getNoteById($note_id)->getNoteTitle(), ENT_QUOTES, 'UTF-8'),
+                    'text' => htmlspecialchars($note_data->getNoteById($note_id)->getNoteText(), ENT_QUOTES, 'UTF-8'),
                 ], $selected);
             }
         }

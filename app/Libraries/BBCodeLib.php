@@ -58,6 +58,27 @@ class BBCodeLib
         }
     }
 
+    /**
+     * 1st removes the backslashes \ to avoid scaping
+     * 2nd convert " and ' to HTML entities
+     * @param string $string
+     * @return string
+     */
+    private function escapeContent(string $string): string
+    {
+        return htmlspecialchars(stripslashes($string), ENT_QUOTES, 'UTF-8');
+    }
+
+    /**
+     * Replaces everything except letters, numbers, #, -, _, and \s
+     * @param string $value
+     * @return array|string|null
+     */
+    private function sanitizeStyleValue(string $value): string
+    {
+        return preg_replace('/[^a-zA-Z0-9#\-_\s]/', '', $value);
+    }
+
     private function setLineJump(): string
     {
         return '<br/>';
@@ -75,7 +96,7 @@ class BBCodeLib
 
         foreach ($tmp as $list) {
             if (strlen(str_replace('', '', $list)) > 0) {
-                $out .= '<li>' . trim($list) . '</li>';
+                $out .= '<li>' . htmlspecialchars(trim($list), ENT_QUOTES, 'UTF-8') . '</li>';
             }
         }
 
@@ -84,71 +105,81 @@ class BBCodeLib
 
     private function setBold(string $string): string
     {
-        return '<span style="font-weight: bold;">' . stripslashes($string) . '</span>';
+        return '<span style="font-weight: bold;">' . $this->escapeContent($string) . '</span>';
     }
 
     private function setItalic(string $string): string
     {
-        return '<span style="font-style: italic;">' . stripslashes($string) . '</span>';
+        return '<span style="font-style: italic;">' . $this->escapeContent($string) . '</span>';
     }
 
     private function setUnderline(string $string): string
     {
-        return '<span style="text-decoration: underline;">' . stripslashes($string) . '</span>';
+        return '<span style="text-decoration: underline;">' . $this->escapeContent($string) . '</span>';
     }
 
     private function setStrike(string $string): string
     {
-        return '<span style="text-decoration: line-through;">' . stripslashes($string) . '</span>';
+        return '<span style="text-decoration: line-through;">' . $this->escapeContent($string) . '</span>';
     }
 
     private function setUrl(string $url, string $title): ?string
     {
-        $title = htmlspecialchars(stripslashes($title), ENT_QUOTES);
+        $title = $this->escapeContent($title);
         $url = trim($url);
         $exclude = [
             'data', 'file', 'javascript', 'jar', '#',
         ];
 
         if (in_array(strstr($url, ':', true), $exclude) == false) {
-            return UrlHelper::setUrl($url, $title, $title);
+            $safeUrl = $this->escapeContent($url);
+            return UrlHelper::setUrl($safeUrl, $title, $title);
         }
 
-        return $url;
+        return $this->escapeContent($url);
     }
 
     private function setEmail(string $mail, string $title): string
     {
-        return '<a href="mailto:' . $mail . '" title="' . $mail . '">' . stripslashes($title) . '</a>';
+        $safeMail = $this->escapeContent($mail);
+        $safeTitle = $this->escapeContent($title);
+        return '<a href="mailto:' . $safeMail . '" title="' . $safeMail . '">' . $safeTitle . '</a>';
     }
 
     private function setImage(string $img): string
     {
+        $img = stripslashes($img);
+
         if ((substr($img, 0, 7) != 'http://') && (substr($img, 0, 8) != 'https://')) {
             $img = XGP_ROOT . IMG_PATH . $img;
         }
 
-        return '<img src="' . $img . '" alt="' . $img . '" title="' . $img . '" />';
+        $safeImg = $this->escapeContent($img);
+        return '<img src="' . $safeImg . '" alt="' . $safeImg . '" title="' . $safeImg . '" />';
     }
 
     private function setFontColor(string $color, string $title): string
     {
-        return '<span style="color:' . $color . '">' . stripslashes($title) . '</span>';
+        $safeColor = $this->sanitizeStyleValue($color);
+        return '<span style="color:' . $safeColor . '">' . $this->escapeContent($title) . '</span>';
     }
 
     private function setFontFamiliy(string $font, string $title): string
     {
-        return '<span style="font-family:' . $font . '">' . stripslashes($title) . '</span>';
+        $safeFont = $this->sanitizeStyleValue($font);
+        return '<span style="font-family:' . $safeFont . '">' . $this->escapeContent($title) . '</span>';
     }
 
     private function setBackgroundColor(string $bg, string $title): string
     {
-        return '<span style="background-color:' . $bg . '">' . stripslashes($title) . '</span>';
+        $safeBg = $this->sanitizeStyleValue($bg);
+        return '<span style="background-color:' . $safeBg . '">' . $this->escapeContent($title) . '</span>';
     }
 
     private function setFontSize(string $size, string $text): string
     {
-        return '<span style="font-size:' . $size . 'px">' . stripslashes($text) . '</span>';
+        $safeSize = preg_replace('/[^0-9]/', '', $size);
+        return '<span style="font-size:' . $safeSize . 'px">' . $this->escapeContent($text) . '</span>';
     }
 
     private function setCoordinates($galaxy, $system, $planet)

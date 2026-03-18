@@ -41,7 +41,9 @@ class BanController extends BaseController
 
     private function buildPage(): void
     {
-        switch ((isset($_GET['mode']) ? $_GET['mode'] : '')) {
+        $mode = filter_input(INPUT_GET, 'mode', FILTER_UNSAFE_RAW) ?? '';
+
+        switch ($mode) {
             case 'ban':
                 $view = $this->showBan();
 
