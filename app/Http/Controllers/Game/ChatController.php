@@ -111,13 +111,13 @@ class ChatController extends BaseController
                     $this->langs->language,
                     [
                         'id' => $this->_receiver_data['user_id'],
-                        'to' => htmlspecialchars($this->_receiver_data['user_name'], ENT_QUOTES, 'UTF-8') . ' ' . FormatLib::prettyCoords(
+                        'to' => $this->_receiver_data['user_name'] . ' ' . FormatLib::prettyCoords(
                             $this->_receiver_data['planet_galaxy'],
                             $this->_receiver_data['planet_system'],
                             $this->_receiver_data['planet_planet']
                         ),
-                        'subject' => ((!isset($this->_message_data['subject'])) ? $this->langs->line('pm_no_subject') : htmlspecialchars($this->_message_data['subject'], ENT_QUOTES, 'UTF-8')),
-                        'text' => ((!isset($this->_message_data['text'])) ? '' : htmlspecialchars($this->_message_data['text'], ENT_QUOTES, 'UTF-8')),
+                        'subject' => ((!isset($this->_message_data['subject'])) ? $this->langs->line('pm_no_subject') : $this->_message_data['subject']),
+                        'text' => ((!isset($this->_message_data['text'])) ? '' : $this->_message_data['text']),
                         'error_text' => ((!isset($this->_message_data['error_text'])) ? '' : $this->_message_data['error_text']),
                         'status_message' => (!$this->_message_data['error_block'] ? [] : ''),
                         '/status_message' => (!$this->_message_data['error_block'] ? [] : ''),

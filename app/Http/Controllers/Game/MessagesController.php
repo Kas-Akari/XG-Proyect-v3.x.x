@@ -183,9 +183,9 @@ class MessagesController extends BaseController
                         strtr(Functions::readConfig('date_format_extended'), ['.Y' => '']),
                         $message['message_time']
                     ),
-                    'message_from' => htmlspecialchars($message['message_from'], ENT_QUOTES, 'UTF-8'),
-                    'message_subject' => htmlspecialchars($message['message_subject'], ENT_QUOTES, 'UTF-8'),
-                    'message_text' => nl2br(htmlspecialchars($message['message_text'], ENT_QUOTES, 'UTF-8')),
+                    'message_from' => $message['message_from'],
+                    'message_subject' => $message['message_subject'],
+                    'message_text' => nl2br($message['message_text']),
                     'message_reply' => $this->setMessageReply($message['message_sender']),
                 ];
             }
@@ -326,7 +326,7 @@ class MessagesController extends BaseController
                 $notes_list[] = [
                     'note_id' => $note['note_id'],
                     'note_color' => ($note['note_priority'] == 0) ? 'lime' : (($note['note_priority'] == 1) ? 'yellow' : 'red'),
-                    'note_title' => htmlspecialchars($note['note_title'], ENT_QUOTES, 'UTF-8'),
+                    'note_title' => $note['note_title'],
                 ];
             }
         }
