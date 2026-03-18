@@ -87,7 +87,7 @@ class Register extends Model
                     'user_email' => $this->user_email,
                     'user_lastip' => $_SERVER['REMOTE_ADDR'],
                     'user_ip_at_reg' => $_SERVER['REMOTE_ADDR'],
-                    'user_agent' => $_SERVER['HTTP_USER_AGENT'],
+                    'user_agent' => $this->db->escapeValue($_SERVER['HTTP_USER_AGENT']),
                     'user_current_page' => $this->db->escapeValue($_SERVER['REQUEST_URI']),
                     'user_register_time' => time(),
                     'user_onlinetime' => time(),
