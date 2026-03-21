@@ -49,7 +49,8 @@ class ChatController extends BaseController
     private function runAction()
     {
         $write_to = filter_input(INPUT_GET, 'playerId', FILTER_VALIDATE_INT);
-        $message_sent = filter_input_array(INPUT_POST);
+        $message_sent = filter_input_array(INPUT_POST); //FIXME: This uses the RAW data, not the sanitized input from SecurePageLib
+        //The problem is that if I sanitize the input, the message format will be lost and it will be shown broken to the user.
 
         if ($write_to) {
             $this->_receiver_data = $this->messagesModel->getHomePlanet($write_to);
