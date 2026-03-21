@@ -511,6 +511,36 @@ class UpdatesLibrary
                 $post_percent
             );
 
+            // PRODUCTION BOOST BY POSITION ON SOLAR SYSTEM
+            $planet_postion = $current_planet['planet_planet'];
+            switch ($planet_postion) {
+                case 1:
+                    $Caps['planet_crystal_perhour'] += Production::productionAmount($crystal_prod, 0.4, $game_resource_multiplier);
+                    break;
+                case 2:
+                    $Caps['planet_crystal_perhour'] += Production::productionAmount($crystal_prod, 0.3, $game_resource_multiplier);
+                    break;
+                case 3:
+                    $Caps['planet_crystal_perhour'] += Production::productionAmount($crystal_prod, 0.2, $game_resource_multiplier);
+                    break;
+                case 6:
+                    $Caps['planet_metal_perhour'] += Production::productionAmount($metal_prod, 0.17, $game_resource_multiplier);
+                    break;
+                case 7:
+                    $Caps['planet_metal_perhour'] += Production::productionAmount($metal_prod, 0.23, $game_resource_multiplier);
+                    break;
+                case 8:
+                    $Caps['planet_metal_perhour'] += Production::productionAmount($metal_prod, 0.35, $game_resource_multiplier);
+                    break;
+                case 9:
+                    $Caps['planet_metal_perhour'] += Production::productionAmount($metal_prod, 0.23, $game_resource_multiplier);
+                    break;
+                case 10:
+                    $Caps['planet_metal_perhour'] += Production::productionAmount($metal_prod, 0.17, $game_resource_multiplier);
+                    break;
+            }
+                
+
             if ($ProdID >= 4) {
                 if ($ProdID == 12 && $current_planet['planet_deuterium'] == 0) {
                     continue;

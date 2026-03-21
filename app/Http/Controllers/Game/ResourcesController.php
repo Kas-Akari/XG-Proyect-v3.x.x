@@ -129,6 +129,35 @@ class ResourcesController extends BaseController
                 $plasmaBoost['crystal'] += $plasmaBoostCrystal;
                 $plasmaBoost['deuterium'] += $plasmaBoostDeuterium;
 
+                // PRODUCTION BOOST BY POSITION ON SOLAR SYSTEM
+                $planet_postion = $this->planet['planet_planet'];
+                switch ($planet_postion) {
+                    case 1:
+                        $resourcesTotal['crystal'] += ProductionLib::productionAmount($crystal_prod, 0.4, $game_resource_multiplier);
+                        break;
+                    case 2:
+                        $resourcesTotal['crystal'] += ProductionLib::productionAmount($crystal_prod, 0.3, $game_resource_multiplier);
+                        break;
+                    case 3:
+                        $resourcesTotal['crystal'] += ProductionLib::productionAmount($crystal_prod, 0.2, $game_resource_multiplier);
+                        break;
+                    case 6:
+                        $resourcesTotal['metal'] += ProductionLib::productionAmount($metal_prod, 0.17, $game_resource_multiplier);
+                        break;
+                    case 7:
+                        $resourcesTotal['metal'] += ProductionLib::productionAmount($metal_prod, 0.23, $game_resource_multiplier);
+                        break;
+                    case 8:
+                        $resourcesTotal['metal'] += ProductionLib::productionAmount($metal_prod, 0.35, $game_resource_multiplier);
+                        break;
+                    case 9:
+                        $resourcesTotal['metal'] += ProductionLib::productionAmount($metal_prod, 0.23, $game_resource_multiplier);
+                        break;
+                    case 10:
+                        $resourcesTotal['metal'] += ProductionLib::productionAmount($metal_prod, 0.17, $game_resource_multiplier);
+                        break;
+                }
+
                 if ($ProdID >= 4) {
                     $energy = ProductionLib::productionAmount($energy_prod, $engineer_boost, 0, true);
                 } else {
