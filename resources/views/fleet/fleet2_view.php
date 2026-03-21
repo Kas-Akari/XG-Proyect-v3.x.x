@@ -44,6 +44,7 @@
                         <option value="{value}"{selected}>{title}</option>
                         {/planet_types}
                     </select>
+                    <input name="expediton" type="submit" value="E" onclick="this.form.elements['planet'].value = 16;">
                     <input name="fleet_group" type="hidden" onChange="shortInfo()" onKeyUp="shortInfo()" value="0" />
                     <input name="acs_target" type="hidden" onChange="shortInfo()" onKeyUp="shortInfo()" value="0:0:0" />
                 </th>
