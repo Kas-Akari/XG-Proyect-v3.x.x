@@ -169,7 +169,7 @@ class Expedition extends Missions
         );
 
         $message = sprintf(
-            $this->langs->line('exp_dm_' . mt_rand(1, 5)),
+            $this->langs->line('exp_dm_' . mt_rand(1, 6)),
             $darkMatterFound
         );
 
@@ -460,7 +460,7 @@ class Expedition extends Missions
     {
         $this->expeditionMessage(
             $fleet['fleet_owner'],
-            $this->langs->line('exp_nothing_' . mt_rand(1, 16)),
+            $this->langs->line('exp_nothing_' . mt_rand(1, 20)),
             (int) $fleet['fleet_end_stay'],
             [
                 'galaxy' => $fleet['fleet_end_galaxy'],
