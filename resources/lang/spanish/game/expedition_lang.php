@@ -41,7 +41,8 @@ $lang = [
     'exp_dm_3' => 'Un campo de energía desconocido rodeaba una nube de Materia Oscura. Los científicos lograron extraer una cantidad significativa para su estudio.<br><br>Se ha capturado %s de Materia Oscura.',
     'exp_dm_4' => 'En las profundidades de una nebulosa, la expedición halló fragmentos de Materia Oscura adheridos a restos de antiguas naves.<br><br>Se ha capturado %s de Materia Oscura.',
     'exp_dm_5' => 'Un artefacto alienígena contenía un núcleo de Materia Oscura. Tras un delicado proceso de extracción, la expedición consiguió recuperarlo.<br><br>Se ha capturado %s de Materia Oscura.',
-
+    'exp_dm_6' => 'Una pequeña criatura alienígena devoró al elefante mascota del capitán. Fue una gran pérdida, pero descubrieron que su sistema digestivo transforma los alimentos en materia oscura.<br><br>Se ha recogido %s de Materia Oscura de su arenero.',
+    
     // delay
     'exp_delay_1' => 'Tu expedición entro en un sector lleno de tormentas de partículas. Esto provocó que los depósitos de energía se sobrecargaran y la mayoría de los sistemas principales de las naves se averiaron. Tus mecánicos fueron capaces de evitar lo peor pero la flota va a volver con un gran retraso.', // ok
     'exp_delay_2' => 'Una anomalía temporal afectó los sistemas de navegación de la flota. Los ingenieros lograron estabilizar la situación, pero el regreso se ha retrasado considerablemente.',
@@ -74,7 +75,11 @@ $lang = [
     'exp_nothing_14' => 'La expedición encontró una señal que parecía importante, pero resultó ser publicidad de una compañía telefónica. Vuelven sin recursos, pero con un cupón de descuento y las mejores ofertas en telefonía intergaláctica.',
     'exp_nothing_15' => 'La tripulación se fué por las ramas y dedicó el tiempo a buscar el WiFi universal. Tras muchos intentos, solo lograron conectar con memes antiguos y volvieron sin nada útil.',
     'exp_nothing_16' => 'Debido a que un alien mencionó al capitán sobre el planeta de la chocolata, este se sumió en sus pensamientos durante todo el tiempo canturreando. Cuando volvió en sí preguntó a la tripulación ¿Hablábamos de chocolate?. Vuelven sin nada útil.',
-
+    'exp_nothing_17' => 'La tripulación encontró un planeta prometedor pero el capitán perdió las llaves de la puerta de la nave, asi que tuvieron que dar la vuelta con las manos vacías.<br>Un cerrajero les espera a su regreso',
+    'exp_nothing_18' => 'Tras un largo y peligroso viaje la flota econtró una sonda alienígena a la deriva. Tras inspeccionarla descubrieron conservado en su interior un objeto con un enigmático mensaje grabado:<br><br>«Llegué hasta el fin del universo y solo conseguí esta estúpida camiseta».',
+    'exp_nothing_19' => 'La flota encontró una nave mercante dañada a la deriva, sin rastro de tripulación pero con la bodega de carga repleta. Resultaron ser cajas y cajas de enjuague bucal.<br>La tripulación regresa con las manos vacías pero el aliento fresco.',
+    'exp_nothing_20' => 'Pensar que aquella nebulosa algún día condensará y de ella nacerá una nueva estrella llena a la tripulación de determinación.<br><br>Pero más allá de eso, vuelven con las manos vacías.',
+    
     // lost ships. The 1st one is by a black hole
     'exp_lost_1' => 'AGUJERO NEGRO. El capitán de la flota decidió impresionar a una chica de la tripulación acercándose demasiado a un agujero negro. La gravedad del agujero negro causó grandes daños en la flota.',
     'exp_lost_2' => '',
