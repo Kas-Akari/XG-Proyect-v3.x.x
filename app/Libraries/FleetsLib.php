@@ -149,9 +149,13 @@ class FleetsLib
         return OfficiersLib::getMaxComputer($computerTech, $amiralLevel);
     }
 
-    public static function getMaxExpeditions(int $astrophysicsTech): int
+    public static function getMaxExpeditions(int $astrophysicsTech, int $admiralLevel = 0): int
     {
-        return floor(sqrt($astrophysicsTech));
+        if ($admiralLevel > 0) {
+            return OfficiersLib::getMaxExpeditions($astrophysicsTech, $admiralLevel);
+        } else {
+            return floor(sqrt($astrophysicsTech));
+        }
     }
 
     public static function getMaxColonies($astrophysicsTech): int

@@ -22,6 +22,15 @@ class OfficiersLib
         return 1 + $computerTech + (1 * (self::isOfficierActive($admiralLevel) ? AMIRAL : 0));
     }
 
+    public static function getMaxExpeditions(int $astrophysicsTech, int $admiralLevel): int
+    {
+        if (self::isOfficierActive($admiralLevel)) {
+            return floor(sqrt($astrophysicsTech)) + 1;
+        } else {
+            return floor(sqrt($astrophysicsTech));
+        }
+    }
+
     public static function getOfficierTimeLeft(int $expiration, array $lang): string
     {
         $lang_line = 'of_time_remaining_many';
