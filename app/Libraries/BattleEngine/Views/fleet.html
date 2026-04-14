@@ -1,3 +1,17 @@
+<?php
+// Ordenar naves primero (202-215) luego defensas (401-408)
+$_fleetArray = [];
+foreach($_fleet as $_shipID => $_ship) {
+    $_fleetArray[$_shipID] = $_ship;
+}
+uksort($_fleetArray, function($a, $b) {
+    // Naves (202-215) antes que defensas (401-408)
+    if (($a >= 202 && $a <= 215) && ($b >= 401 && $b <= 408)) return -1;
+    if (($a >= 401 && $a <= 408) && ($b >= 202 && $b <= 215)) return 1;
+    // Dentro del mismo grupo, ordenar por ID
+    return $a - $b;
+});
+?>
 <table class="lined widthFull" style="width:100%;border-collapse:collapse;border: 1px #415680 solid;margin-bottom: 10px;">
     <tr>
         <td style="text-align:center">
@@ -10,14 +24,14 @@
             <table class="lined widthFull" style="margin: 0 auto;">
                 <thead>
                     <tr>
-                        <?php foreach($_fleet as $_shipID => $_ship) { ?>
+                        <?php foreach($_fleetArray as $_shipID => $_ship) { ?>
                             <th><?php echo App\Libraries\BattleEngine\Utils\LangManager::getInstance()->getShipName($_shipID); ?></th>
                         <?php } ?>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <?php foreach($_fleet as $_shipID => $_ship) { ?>
+                        <?php foreach($_fleetArray as $_shipID => $_ship) { ?>
                             <th><?php echo $_ship->getCount(); ?></th>
                         <?php } ?>
                     </tr>
