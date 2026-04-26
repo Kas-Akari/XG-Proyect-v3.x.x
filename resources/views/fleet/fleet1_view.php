@@ -9,11 +9,11 @@
                     <tr>
                         <td style="background-color: transparent;">{fl_fleets} {fleets} / {max_fleets} &nbsp; &nbsp; {fl_expeditions} {expeditions} / {max_expeditions}</td>
                         <td style="background-color: transparent;">
-                            <input name="kas_exp_fleets" type="submit" value="K" onclick="document.querySelector('input[name=ship202]').value = 120; document.querySelector('input[name=ship206]').value = 1; document.querySelector('input[name=ship210]').value = 1;">
+                            <input name="kas_exp_fleets" type="submit" value="K" onclick="document.querySelector('input[name=ship202]').value = 293; document.querySelector('input[name=ship206]').value = 1; document.querySelector('input[name=ship210]').value = 1;">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input name="sai_exp_fleets" type="submit" value="S" onclick="document.querySelector('input[name=ship202]').value = 25; document.querySelector('input[name=ship203]').value = 15; document.querySelector('input[name=ship204]').value = 5;document.querySelector('input[name=ship205]').value = 6; document.querySelector('input[name=ship206]').value = 5; document.querySelector('input[name=ship210]').value = 5;">
+                            <input name="sai_exp_fleets" type="submit" value="S" onclick="document.querySelector('input[name=ship202]').value = 100; document.querySelector('input[name=ship203]').value = 50; document.querySelector('input[name=ship204]').value = 10;document.querySelector('input[name=ship205]').value = 5; document.querySelector('input[name=ship206]').value = 4; document.querySelector('input[name=ship210]').value = 2;">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input name="hov_exp_fleets" type="submit" value="H" onclick="document.querySelector('input[name=ship202]').value = 72; document.querySelector('input[name=ship204]').value = 1; document.querySelector('input[name=ship210]').value = 208;">
+                            <input name="hov_exp_fleets" type="submit" value="H" onclick="document.querySelector('input[name=ship202]').value = 172; ; document.querySelector('input[name=ship210]').value = 512;">
                         </td>
                         <td style="background-color: transparent;" align="right"><a href="game.php?page=movement">{fl_fleets_movements}</a></td>
                     </tr>
