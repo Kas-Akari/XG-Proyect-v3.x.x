@@ -13,7 +13,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <input name="sai_exp_fleets" type="submit" value="S" onclick="document.querySelector('input[name=ship202]').value = 100; document.querySelector('input[name=ship203]').value = 50; document.querySelector('input[name=ship204]').value = 10;document.querySelector('input[name=ship205]').value = 5; document.querySelector('input[name=ship206]').value = 4; document.querySelector('input[name=ship210]').value = 2;">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input name="hov_exp_fleets" type="submit" value="H" onclick="document.querySelector('input[name=ship202]').value = 172; ; document.querySelector('input[name=ship210]').value = 512;">
+                            <input name="hov_exp_fleets" type="submit" value="H" onclick="document.querySelector('input[name=ship203]').value = 35; document.querySelector('input[name=ship205]').value = 1; document.querySelector('input[name=ship210]').value = 770;">
                         </td>
                         <td style="background-color: transparent;" align="right"><a href="game.php?page=movement">{fl_fleets_movements}</a></td>
                     </tr>
