@@ -162,7 +162,15 @@ class Fleet1Controller extends BaseController
                 }
             }
         }
-
+        
+        //Prueba a mover los satelites solares al final de la lista
+        foreach ($list_of_ships as $key => $ship) {
+            if ($ship['ship_id'] == 212) {
+                unset($list_of_ships[$key]); // Lo elimina de su posici�n actual
+                $list_of_ships[] = $ship;    // Lo a�ade al final
+                break;                       // Sale del bucle si solo puede haber uno
+            }
+        }        
         return $list_of_ships;
     }
 
