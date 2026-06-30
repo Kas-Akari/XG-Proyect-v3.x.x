@@ -203,6 +203,11 @@ class Expedition extends Missions
         $failedCaptureCounter = 0;
 
         for ($ship = 202; $ship <= 215; $ship++) {
+            //Filtrado para que no puedas multiplicar recicladores, estrellas de la muerte o colonizadores
+            //¿Contento Merphox? ¬¬
+            if ($ship == 209 || $ship == 214 || $ship == 208) {
+                continue;
+            }
             if (isset($currentFleet[$ship]) && $currentFleet[$ship] != 0 && $structuralIntegrityAvailable > 0 && $failedCaptureCounter < 3 ) {
                 $structuralIntegrityOfCurrentShip = $priceList[$ship]['metal'] + $priceList[$ship]['crystal'];
                 $Nmax = intval($structuralIntegrityAvailable / $structuralIntegrityOfCurrentShip);
